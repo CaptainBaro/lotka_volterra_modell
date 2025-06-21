@@ -7,16 +7,17 @@ st.title("Lotka-Volterra-Modell – interaktive Simulation")
 
 # Parameter-Slider in der Sidebar
 a = st.sidebar.slider("Beute-Wachstumsrate (a)", 0.01, 1.0, 0.1, step=0.01)
-alp = st.sidebar.slider("Räuber-Einfluss (α) (* 10^(-4))", 0.1, 0.11, 2.0, step=0.01)
+alp = st.sidebar.slider("Räuber-Einfluss (α) (* 10^(-4))", 0.1, 0.2, 2.0, step=0.01)
 c = st.sidebar.slider("Räuber-Sterberate (c)", 0.01, 1.0, 0.4, step=0.01)
-gam = st.sidebar.slider("Wachstum durch Beute (γ)", 0.00001, 0.001, 0.0002, step=0.00001)
+gam = st.sidebar.slider("Wachstum durch Beute (γ) (* 10^(-4))", 0.1, 0.2, 2.0, step=0.01)
 x0 = st.sidebar.slider("Startpopulation Beute", 100, 2000, 1000, step=100)
 y0 = st.sidebar.slider("Startpopulation Räuber", 100, 2000, 1000, step=100)
 
 # Zeitintervall
 t_span = (0, 140)
 t_eval = np.linspace(*t_span, 10000)
-alp = alp  * 10^(-4)
+alp = alp  * 10**(-4)
+gam = gam * 10**(-4)
 
 # Differentialgleichungssystem
 def f(t, z):
